@@ -2,6 +2,7 @@ import { DELETE_EVENT, GET_EVENTS, SAVE_EVENT, SHOW_FOR_DELETE, SHOW_FOR_EDIT, U
 
 export const initialState = {
     event: null,
+    event_id: null,
     error: null,
     events: [],
     message: null,
@@ -45,7 +46,7 @@ export function BoletiaReducer(state = initialState, action){
             return {
                 ...state,
                 confirmodal: action.confirmodal,
-                event: action.event
+                event_id: action.event_id
             }
         
         default:

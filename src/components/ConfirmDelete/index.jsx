@@ -3,10 +3,10 @@ import { Button, Modal } from "react-bootstrap";
 import BoletiaContext from "../../context/context";
 
 const ConfirmDelete = () => {
-    const { event, confirmodal, confirmModal, deleteEvent } = useContext(BoletiaContext);
+    const { event_id, confirmodal, confirmModal, deleteEvent } = useContext(BoletiaContext);
 
     const fetchDeleteEvent = () => {
-        deleteEvent(event?._id)
+        deleteEvent(event_id)
         confirmModal(true)
     }
 

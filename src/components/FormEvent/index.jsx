@@ -7,7 +7,7 @@ import UpdateImages from "../UpdateImages";
 
 const FormEvent = () => {
   const { event, showmodal, showModal } = useContext(BoletiaContext);
-  const { data, setData, onChange } = useOnChangeValue();
+  const { errorFiles, data, setData, onChange } = useOnChangeValue();
   const { validated, handleSubmit } = useHandleSubmit(
     event,
     data,
@@ -51,9 +51,10 @@ const FormEvent = () => {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="mb-3" controlId="formBasicPassword" hasValidation>
             <Form.Label>Url Buy Tickets</Form.Label>
             <Form.Control
+              isInvalid={errorFiles.invalidUrl ? true : false}
               name="urlTickets"
               onChange={onChange}
               required
@@ -66,9 +67,10 @@ const FormEvent = () => {
           </Form.Group>
           {!event ? (
             <>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Group className="mb-3" controlId="formBasicPassword" hasValidation>
                 <Form.Label>Image Desktop</Form.Label>
                 <Form.Control
+                  isInvalid={errorFiles.bannerDesktop ? true : false}
                   onChange={(e) =>
                     setData({ ...data, bannerDesktop: e.target.files[0] })
                   }
@@ -76,27 +78,27 @@ const FormEvent = () => {
                   type="file"
                 />
                 <Form.Control.Feedback type="invalid">
-                  You must upload a desktop image
+                  {errorFiles.bannerDesktop ? errorFiles.bannerDesktop : "You must upload a desktop image"}
                 </Form.Control.Feedback>
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Group className="mb-3" controlId="formBasicPassword" hasValidation>
                 <Form.Label>Image Tablet</Form.Label>
                 <Form.Control
-                  onChange={(e) =>
-                    setData({ ...data, bannerTablet: e.target.files[0] })
-                  }
+                  isInvalid={errorFiles.bannerTablet ? true : false}
+                  onChange={(e) =>  setData({ ...data, bannerTablet: e.target.files[0] })}
                   required
                   type="file"
                 />
                 <Form.Control.Feedback type="invalid">
-                  You must upload a tablet image
+                  {errorFiles.bannerTablet ? errorFiles.bannerTablet : "You must upload a tablet image"}
                 </Form.Control.Feedback>
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Group className="mb-3" controlId="formBasicPassword" hasValidation>
                 <Form.Label>Image Mobile</Form.Label>
                 <Form.Control
+                  isInvalid={errorFiles.bannerMobile ? true : false}
                   onChange={(e) =>
                     setData({ ...data, bannerMobile: e.target.files[0] })
                   }
@@ -104,7 +106,7 @@ const FormEvent = () => {
                   type="file"
                 />
                 <Form.Control.Feedback type="invalid">
-                  You must upload a mobile image
+                  {errorFiles.bannerMobile ? errorFiles.bannerMobile : "You must upload a mobile image"}
                 </Form.Control.Feedback>
               </Form.Group>
             </>

@@ -15,10 +15,9 @@ import styles from './Table.css'
 import useOnChangeValue from "../../hooks/useOnChangeValue";
 
 const Table = () => {
-  const { events, confirmodal, showModal, confirmModal } = useContext(BoletiaContext);
+  const { events, showModal, confirmModal } = useContext(BoletiaContext);
   const { setData } = useOnChangeValue();
 
-console.log(confirmodal);
   return (
     <TableComponent className={styles.table} responsive striped bordered hover variant="dark">
       <thead>
@@ -111,7 +110,7 @@ console.log(confirmodal);
                 placement={"bottom"}
                 overlay={<Tooltip id={ev._id}>Delete event</Tooltip>}
               >
-                  <span className={styles.trash} onClick={() => confirmModal(false, ev)}><FaTrash color="red" size={20} /></span>
+                  <span className={styles.trash} onClick={() => confirmModal(false, ev._id)}><FaTrash color="red" size={20} /></span>
               </OverlayTrigger>
             </td>
           </tr>

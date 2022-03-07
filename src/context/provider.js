@@ -23,8 +23,8 @@ const BoletiaProvider = ({ children }) => {
         dispatch({ type: 'SHOW_FOR_EDIT', showmodal: !showmodal, event: event })
     }
 
-    const confirmModal = (confirmodal, event = null) => {
-        dispatch({ type: 'SHOW_FOR_DELETE', confirmodal: !confirmodal, event: event })
+    const confirmModal = (confirmodal, event_id = null) => {
+        dispatch({ type: 'SHOW_FOR_DELETE', confirmodal: !confirmodal, event_id: event_id })
     }
 
     const getListEvents = async () => {
@@ -141,6 +141,7 @@ const BoletiaProvider = ({ children }) => {
                 titletoast: state.titletoast,
                 showmodal: state.showmodal,
                 event: state.event,
+                event_id: state.event_id,
                 confirmodal: state.confirmodal,
                 saveEvent,
                 getListEvents,

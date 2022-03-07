@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Button, Toast, ToastContainer } from "react-bootstrap";
+import { Toast, ToastContainer } from "react-bootstrap";
 import ConfirmDelete from "../components/ConfirmDelete";
 import FormEvent from "../components/FormEvent";
 import Layout from "../components/Layout";
@@ -9,7 +9,7 @@ import BoletiaContext from "../context/context";
 const Home = () => {
   const [showToast, setShowToast] = useState(false);
 
-  const { titletoast, message, showModal } = useContext(BoletiaContext);
+  const { titletoast, message } = useContext(BoletiaContext);
   const toggleShowA = () => setShowToast(!showToast);
 
   useEffect(() => {
@@ -33,9 +33,7 @@ const Home = () => {
           <Toast.Body>{message}</Toast.Body>
         </Toast>
       </ToastContainer>
-      <Button variant="primary" onClick={() => showModal(false)}>
-        Create Event
-      </Button>
+     
       <Table />
       <FormEvent />
       <ConfirmDelete />
